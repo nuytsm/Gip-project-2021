@@ -31,10 +31,7 @@ public class Controller {
 	@GetMapping("/methods")
 	public Iterable<Methods> getMethods(){
 		return Methodsrepo.findAll();
-
 	}
-	
-	
 	@GetMapping("/test")
 	public void test(){
 		Location loc = Locationrepo.findById(1).get();
@@ -43,5 +40,9 @@ public class Controller {
 		m = Methodsrepo.save(m);
 		loc.locationmetehods.add(m);
 		Locationrepo.save(loc);
+	}
+	@GetMapping("/methodsforlocation")
+	public void methodsforlocation(@RequestParam("id") int id ) {
+		 
 	}
 }

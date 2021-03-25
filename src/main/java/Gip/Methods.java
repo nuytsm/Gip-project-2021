@@ -13,7 +13,7 @@ public class Methods {
 	
 	@Id
 	@GeneratedValue
-	private Integer methodsid;
+	private Integer methodsid =0;
 
 	
 	@Column(name="methods", nullable = false)

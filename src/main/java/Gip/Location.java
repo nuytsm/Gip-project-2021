@@ -30,7 +30,7 @@ public class Location {
 	
 	@Id
 	@GeneratedValue
-	private Integer locationid;
+	private Integer locationid=0;
 
 	
 	@Column(name="locationsname", nullable = false)

@@ -1,3 +1,5 @@
+
+
 var myvue = new Vue({
     el: '#body',
     data: {
@@ -6,6 +8,7 @@ var myvue = new Vue({
         locations: '',
         id:'1',
         currentlocation: 'test'
+        methods
     },
     methods: {
 
