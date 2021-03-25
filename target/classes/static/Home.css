@@ -1,0 +1,78 @@
+body{
+ background-color: darkslategrey;
+}
+#playerstat{
+background-color: darkturquoise;
+border-color: lightslategrey;
+border-width: 1cm;
+height: 250px;
+width: 175px;
+left: 0;
+top: 0;
+}
+#locationname{
+    background-color: lightblue;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height: 100px;
+    width: 200px;;
+    position: sticky;
+    top: 5%;
+    left: 40%;
+}
+#locationtext{
+    background-color: lightskyblue;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height: 300px;
+    width: 500px;;
+    position:sticky;
+    top: 15%;
+    left: 30%;
+
+}
+#methods{
+    background-color:mediumaquamarine;
+    display:flex;
+    height: 300px;
+    width: 500px;;
+    position:sticky;
+    top: 50%;
+    left: 30%;  
+}
+#method1{
+    background-color: mediumorchid;
+
+    height: 150px;
+    width: 150px;;
+    position:sticky;
+    top: 0%;
+    left: 0%;  
+}
+#method2{
+    background-color: mediumorchid;
+
+    height: 150px;
+    width: 150px;;
+    position:sticky;
+    top: 0%;
+    left: 100%;  
+}
+#method3{
+    background-color: mediumorchid;
+    height: 150px;
+    width: 150px;;
+    position:sticky;
+    bottom: 0%;
+    left: 100%;  
+}
+#method4{
+    background-color: mediumorchid;
+    height: 150px;
+    width: 150px;;
+    position:sticky;
+    bottom: 0%;
+    left: 100%;  
+}
