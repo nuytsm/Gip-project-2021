@@ -12,20 +12,18 @@
        <div id="playerstat">
 
        </div>
-<button  v-on:click='getlocationbyid(5)'>getloc</button>
+<button  v-on:click='getlocationbyid(currentlocationid)'>getloc</button>
        <div id="currentlocationname" >
         <p> {{currentlocation.locationsname}} </p>
        </div>
      
-    </div>
-       <div v-for="loc in locations" id="locationname" >
-           <p> {{locations.locationtext}} </p>
-        
-        
-       </div>
-       
+       <ul>
+            <li v-for="mhjk in locationmethods" v-on:click="choosemethods(mhjk.methodid)">
+                {{mhjk.methods }} 
+            </li>
+        </ul>
        <div id="locationtext">
-
+        {{currentlocation.locationtext}}
        </div>
        <div id="methods">
         <div id="method1">
@@ -43,6 +41,7 @@
        </div>
    
     </div>
+</div>
     <script src="Home.js"></script>
 </body>
 

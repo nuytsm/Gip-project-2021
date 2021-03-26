@@ -2,6 +2,8 @@ package Gip;
 
 
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -32,14 +34,10 @@ public class Controller {
 	public Iterable<Methods> getMethods(){
 		return Methodsrepo.findAll();
 	}
-	@GetMapping("/test")
-	public void test(){
-		Location loc = Locationrepo.findById(1).get();
-		Methods m = new Methods();
-		m.setMethods("testmethods");
-		m = Methodsrepo.save(m);
-		loc.locationmetehods.add(m);
-		Locationrepo.save(loc);
+	@GetMapping("/locationmethods")
+	public List<Methods> test(@RequestParam("id") int id ){
+		Location loc = Locationrepo.findById(id).get();
+		return loc.locationmetehods;
 	}
 	@GetMapping("/methodsforlocation")
 	public void methodsforlocation(@RequestParam("id") int id ) {

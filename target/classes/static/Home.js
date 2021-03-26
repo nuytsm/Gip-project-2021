@@ -8,7 +8,7 @@ var myvue = new Vue({
         locations: '',
         id:'1',
         currentlocation: 'test'
-        methods
+        locationmethods: ''
     },
     methods: {
 
@@ -18,13 +18,24 @@ var myvue = new Vue({
             .then(function(response){
                 this.currentlocation = response.data;
                 console.log(this.currentlocation);
-
+               function(getlocationmethods){} 
 
             }.bind(this))
             .catch(error => console.log(error))
         }
 
     ,
+    getlocationmethods(id){
+        axios
+        .get( 'http://localhost:8886/locationmethods?id=' + this.id )
+        .then(function(response){
+            this.methods = response.data;
+            console.log(this.methods);
+
+
+        }.bind(this))
+        .catch(error => console.log(error))
+    },
     getcurrentlocationnamebyid(id) {
         axios
           .get( 'http://localhost:8886/locations'+ this.id)
