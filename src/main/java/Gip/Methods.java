@@ -14,8 +14,22 @@ public class Methods {
 	@Id
 	@GeneratedValue
 	private Integer methodsid =0;
+	
+
+	@Column
+	private Integer nextlocationid =0;
 
 	
+	public Integer getNextlocationid() {
+		return nextlocationid;
+	}
+
+
+	public void setNextlocationid(Integer nextlocationid) {
+		this.nextlocationid = nextlocationid;
+	}
+
+
 	@Column(name="methods", nullable = false)
 	private String methods;
 

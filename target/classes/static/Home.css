@@ -10,7 +10,7 @@ width: 175px;
 left: 0;
 top: 0;
 }
-#locationname{
+#currentlocationname{
     background-color: lightblue;
     display:flex;
     justify-content:center;

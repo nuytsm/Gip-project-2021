@@ -25,8 +25,15 @@ public class Location {
 	  name = "locationmethods", 
 	  joinColumns = @JoinColumn(name = "locationid"), 
 	  inverseJoinColumns = @JoinColumn(name = "methodid"))
-	public List<Methods> locationmetehods = new ArrayList<>();
+	public List<Methods> locationmethods = new ArrayList<>();
 	
+//	@ManyToMany
+//	@JoinTable(
+//	  name = "nextlocation", 
+//	  joinColumns = @JoinColumn(name = "locationid"), 
+//	  inverseJoinColumns = @JoinColumn(name = "nextlocationid"))
+//	public List<Methods> m = new ArrayList<>();
+//	
 	
 	@Id
 	@GeneratedValue

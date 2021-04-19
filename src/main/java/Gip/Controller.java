@@ -37,8 +37,9 @@ public class Controller {
 	@GetMapping("/locationmethods")
 	public List<Methods> test(@RequestParam("id") int id ){
 		Location loc = Locationrepo.findById(id).get();
-		return loc.locationmetehods;
+		return loc.locationmethods;
 	}
+	
 	@GetMapping("/methodsforlocation")
 	public void methodsforlocation(@RequestParam("id") int id ) {
 		 

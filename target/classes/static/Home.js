@@ -2,23 +2,26 @@
 
 var myvue = new Vue({
     el: '#body',
+    Numbermethods: 4,
     data: {
         testlist: [{naam: "allo"},
                     {naam: "jow"}],
         locations: '',
-        id:'1',
-        currentlocation: 'test'
-        locationmethods: ''
+        currentlocationid: 3,
+        locationmethods: '',
+        currentlocation:'',
+        groupedItems: []
     },
+
     methods: {
 
         getlocationbyid(id){
             axios
-            .get( 'http://localhost:8886/locationbyid?id=' + this.id )
+            .get( 'http://localhost:8886/locationbyid?id=' + id )
             .then(function(response){
                 this.currentlocation = response.data;
                 console.log(this.currentlocation);
-               function(getlocationmethods){} 
+                this.getlocationmethods(id) 
 
             }.bind(this))
             .catch(error => console.log(error))
@@ -27,21 +30,32 @@ var myvue = new Vue({
     ,
     getlocationmethods(id){
         axios
-        .get( 'http://localhost:8886/locationmethods?id=' + this.id )
+        .get( 'http://localhost:8886/locationmethods?id=' + id )
         .then(function(response){
-            this.methods = response.data;
-            console.log(this.methods);
-
-
+            this.locationmethods = response.data;
+            console.log(this.locationmethods.naam + this.locationmethods.id);
         }.bind(this))
         .catch(error => console.log(error))
     },
     getcurrentlocationnamebyid(id) {
         axios
-          .get( 'http://localhost:8886/locations'+ this.id)
-          .then(response => (this.currentlocations = response.data))
+          .get( 'http://localhost:8886/locations'+ id)
+          .then(response => (this.currentlocation = response.data))
           .catch(error => console.log(error))
       },
+      getlocationbymethodid(id){
+        axios
+        .get( 'http://localhost:8886/locationbyid?id=' + id )
+        .then(function(response){
+            this.currentlocation = response.data;
+            console.log(this.currentlocation);
+            this.getlocationmethods(id) 
+
+        }.bind(this))
+        .catch(error => console.log(error))
+    }
+      
+     
    
 }
 })
