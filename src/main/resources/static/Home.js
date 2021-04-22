@@ -1,4 +1,6 @@
-
+var healthpoints = 20;
+var maxhealth = 20;
+var startlocatie = 18;
 
 var myvue = new Vue({
     el: '#body',
@@ -7,15 +9,18 @@ var myvue = new Vue({
         testlist: [{naam: "allo"},
                     {naam: "jow"}],
         locations: '',
-        currentlocationid: 3,
-        locationmethods: '',
+        currentlocationid: 18,
+        locationmethods:'',
         currentlocation:'',
         groupedItems: []
     },
-
+    beforeMount() {
+        this.getlocationbyid(startlocatie);    
+    },
     methods: {
 
         getlocationbyid(id){
+            
             axios
             .get( 'http://localhost:8886/locationbyid?id=' + id )
             .then(function(response){
@@ -44,6 +49,13 @@ var myvue = new Vue({
           .catch(error => console.log(error))
       },
       getlocationbymethodid(id){
+        document.getElementById("healthpoints").innerHTML = "Health: " + healthpoints + "/" + maxhealth;
+        if (id == 13){
+            healthpoints = healthpoints -5;}
+            document.getElementById("healthpoints").innerHTML = "Health: " + healthpoints + "/" + maxhealth;
+        if (healthpoints <= 0){
+            this.gameovermethod(11);
+        } else {
         axios
         .get( 'http://localhost:8886/locationbyid?id=' + id )
         .then(function(response){
@@ -52,8 +64,23 @@ var myvue = new Vue({
             this.getlocationmethods(id) 
 
         }.bind(this))
-        .catch(error => console.log(error))
-    }
+        .catch(error => console.log(error));
+    }  
+    },
+    gameovermethod(id){
+        healthpoints = 20;
+        axios
+        .get( 'http://localhost:8886/locationbyid?id=' + id )
+        .then(function(response){
+            this.currentlocation = response.data;
+            console.log(this.currentlocation);
+            this.getlocationmethods(id) 
+
+        }.bind(this))
+        .catch(error => console.log(error));
+
+    },
+  
       
      
    
