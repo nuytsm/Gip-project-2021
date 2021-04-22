@@ -2,6 +2,8 @@ var healthpoints = 20;
 var maxhealth = 20;
 var startlocatie = 18;
 
+var kasteelpoortkey =  false;
+
 var myvue = new Vue({
     el: '#body',
     Numbermethods: 4,
@@ -18,6 +20,11 @@ var myvue = new Vue({
         this.getlocationbyid(startlocatie);    
     },
     methods: {
+        healthbar(){
+            var healthwidth = healthpoints/maxhealth*100;
+            console.log(document.getElementById("healthbar"));
+            document.getElementById("healthbar").style.width = healthwidth + '%';
+        },
 
         getlocationbyid(id){
             
@@ -49,12 +56,18 @@ var myvue = new Vue({
           .catch(error => console.log(error))
       },
       getlocationbymethodid(id){
+        if (id == 25){
+            kasteelpoortkey = true;
+        }
         document.getElementById("healthpoints").innerHTML = "Health: " + healthpoints + "/" + maxhealth;
         if (id == 13){
             healthpoints = healthpoints -5;}
+            if (id == 22){
+                healthpoints = maxhealth;}
             document.getElementById("healthpoints").innerHTML = "Health: " + healthpoints + "/" + maxhealth;
         if (healthpoints <= 0){
             this.gameovermethod(11);
+            
         } else {
         axios
         .get( 'http://localhost:8886/locationbyid?id=' + id )
@@ -65,7 +78,8 @@ var myvue = new Vue({
 
         }.bind(this))
         .catch(error => console.log(error));
-    }  
+    }
+    this.healthbar();  
     },
     gameovermethod(id){
         healthpoints = 20;
