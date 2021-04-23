@@ -6,7 +6,6 @@ var kasteelpoortkey =  false;
 
 var myvue = new Vue({
     el: '#body',
-    Numbermethods: 4,
     data: {
         testlist: [{naam: "allo"},
                     {naam: "jow"}],
@@ -72,6 +71,7 @@ var myvue = new Vue({
         axios
         .get( 'http://localhost:8886/locationbyid?id=' + id )
         .then(function(response){
+
             this.currentlocation = response.data;
             console.log(this.currentlocation);
             this.getlocationmethods(id) 

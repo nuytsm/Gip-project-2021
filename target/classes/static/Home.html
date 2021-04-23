@@ -10,24 +10,28 @@
     <body>
     <div id="body">
        <div id="playerstat">
-            <div id= healthpoints>
-
+            <div id="healthpoints">     
+            </div>
+            <div id="barcontainer">
+                <div id="healthbar" style="height:24px;"></div>  
             </div>
        </div>
-       <div id="currentlocationname" >
-        <p> {{currentlocation.locationsname}} </p>
-       </div>
+       <div id="maintext">
+         <div id="currentlocationname" >
+            <p> {{currentlocation.locationsname}} </p>
+         </div>
      
        
-       <div id="locationtext">
-        {{currentlocation.locationtext}}
-       </div>
-       <div id="methods">
-        <ul>
-            <li v-for="method in locationmethods" v-on:click="getlocationbymethodid(method.nextlocationid)">
+        <div id="locationtext">
+            {{currentlocation.locationtext}}
+        </div>
+         <div id="methods">
+         <ul>
+             <li v-for="method in locationmethods" v-on:click="getlocationbymethodid(method.nextlocationid)">
                 {{method.methods }} 
-            </li>
-        </ul>
+             </li>
+         </ul>
+            </div>
         </div>
        </div>
     </div>

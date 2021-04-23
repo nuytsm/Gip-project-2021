@@ -27,7 +27,7 @@
         </div>
          <div id="methods">
          <ul>
-             <li v-for="method in locationmethods" v-on:click="getlocationbymethodid(method.nextlocationid)">
+             <li id="methodlist" v-for="method in locationmethods" v-on:click="getlocationbymethodid(method.nextlocationid)">
                 {{method.methods }} 
              </li>
          </ul>
