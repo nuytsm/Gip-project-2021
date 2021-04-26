@@ -2,11 +2,8 @@ var healthpoints = 20;
 var maxhealth = 20;
 var startlocatie = 18;
 
-var kasteelpoortkey =  false;
-
 var myvue = new Vue({
     el: '#body',
-    Numbermethods: 4,
     data: {
         testlist: [{naam: "allo"},
                     {naam: "jow"}],
@@ -14,12 +11,25 @@ var myvue = new Vue({
         currentlocationid: 18,
         locationmethods:'',
         currentlocation:'',
+        playerinventory:'',
         groupedItems: []
     },
     beforeMount() {
         this.getlocationbyid(startlocatie);    
     },
     methods: {
+        getplayerinventory(){
+            axios
+            .get( 'http://localhost:8886/playerinv')
+            .then(function(response){
+    
+                this.playerinventory = response.data;
+                console.log(this.playerinventory);
+    
+            }.bind(this))
+            .catch(error => console.log(error));
+        
+        },
         healthbar(){
             var healthwidth = healthpoints/maxhealth*100;
             console.log(document.getElementById("healthbar"));
@@ -72,6 +82,7 @@ var myvue = new Vue({
         axios
         .get( 'http://localhost:8886/locationbyid?id=' + id )
         .then(function(response){
+
             this.currentlocation = response.data;
             console.log(this.currentlocation);
             this.getlocationmethods(id) 

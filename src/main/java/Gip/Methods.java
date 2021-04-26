@@ -18,8 +18,24 @@ public class Methods {
 
 	@Column
 	private Integer nextlocationid =0;
+	
+	@Column
+	private Integer requireditemid =0;
+	
 
 	
+
+	
+	public Integer getRequireditemid() {
+		return requireditemid;
+	}
+
+
+	public void setRequireditemid(Integer requireditemid) {
+		this.requireditemid = requireditemid;
+	}
+
+
 	public Integer getNextlocationid() {
 		return nextlocationid;
 	}

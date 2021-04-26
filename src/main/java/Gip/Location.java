@@ -17,9 +17,6 @@ import javax.persistence.Table;
 @Table(name= "locations")
 public class Location {
 	
-	
-	
-	
 	@ManyToMany
 	@JoinTable(
 	  name = "locationmethods", 

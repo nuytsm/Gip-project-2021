@@ -80,6 +80,17 @@ flex-direction: column;
     text-align: center;
     font-family: 'Myriad Pro','Open Sans',sans-serif;
     position:sticky;
+    
+}
+ul{
+    list-style-type:none;
+}
+#methodlist{
+    padding: 2px 6px 2px 6px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
 }
 .flex-container{
     display: flex;
