@@ -55,3 +55,7 @@ alter table methods
 alter table methods
 	add foreign key (deletemethodwithitemid) references items(itemid)
 ;
+
+unlock tables
+;
+
