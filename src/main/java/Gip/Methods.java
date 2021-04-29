@@ -20,12 +20,22 @@ public class Methods {
 	private Integer nextlocationid =0;
 	
 	@Column
+	private Integer deletemethodwithitemid =0;
+	
+	@Column
 	private Integer requireditemid =0;
 	
-
 	
+	public Integer getDeletemethodwithitemid() {
+		return deletemethodwithitemid;
+	}
 
-	
+
+	public void setDeletemethodwithitemid(Integer deletemethodwithitemid) {
+		this.deletemethodwithitemid = deletemethodwithitemid;
+	}
+
+
 	public Integer getRequireditemid() {
 		return requireditemid;
 	}
@@ -68,6 +78,9 @@ public class Methods {
 	public void setMethods(String methods) {
 		this.methods = methods;
 	}
+
+
+
 	
 
 	

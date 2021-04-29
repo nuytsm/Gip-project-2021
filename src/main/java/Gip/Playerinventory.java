@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -12,42 +14,53 @@ import javax.persistence.Table;
 public class Playerinventory{
 	@Id
 	@GeneratedValue
-	private Integer id =0;
+	private Integer inventoryid =0;
+	
+//
+//	@Column
+//	private Integer itemid =0;
+	
+	@ManyToOne
+	@JoinColumn(name ="itemid")
+	private Items item;
+
+//	@Column(name="itemname", nullable = false)
+//	private String playerinvitemname;
+
+
 	
 
-	@Column
-	private Integer itemid =0;
 
-	@Column(name="itemname", nullable = false)
-	private String playerinvitemname;
+//	public String getPlayerinvitemname() {
+//		return playerinvitemname;
+//	}
+//
+//
+//	public void setPlayerinvitemname(String playerinvitemname) {
+//		this.playerinvitemname = playerinvitemname;
+//	}
 
-	public String getItemname() {
-		return playerinvitemname;
+
+	public Integer getinventoryId() {
+		return inventoryid;
 	}
 
 
-	public void setItemname(String playerinvitemname) {
-		this.playerinvitemname = playerinvitemname;
+	public void setId(Integer inventoryid) {
+		this.inventoryid = inventoryid;
 	}
 
 
-	public Integer getId() {
-		return id;
+	public Items getItem() {
+		return item;
 	}
 
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setItem(Items item) {
+		this.item = item;
 	}
 
 
-	public Integer getItemid() {
-		return itemid;
-	}
-
-
-	public void setItemid(Integer itemid) {
-		this.itemid = itemid;
-	}
+	
 	
 }

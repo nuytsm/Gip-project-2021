@@ -49,3 +49,9 @@ alter table playerinventory
 alter table methods
 	add foreign key (itemname) references items(itemname)
 ;
+alter table methods
+	add deletemethodwithitemid int
+;
+alter table methods
+	add foreign key (deletemethodwithitemid) references items(itemid)
+;

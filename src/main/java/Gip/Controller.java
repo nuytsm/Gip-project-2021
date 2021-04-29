@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -33,11 +34,17 @@ public class Controller {
 		return Locationrepo.findAll();
 	}
 	
-	@GetMapping("/playerinv")
-	public Iterable<Playerinventory> getitemid(){
-		return playerinventoryrepo.findAll();
-	}
-	
+	@GetMapping("/itemsininventory")
+		public Iterable<Playerinventory> getItem(@RequestParam("id") int id) {
+			Optional<Items> item = itemrepo.findById(id);
+			List<Playerinventory> itemrepoininventory = item.getItemid(id);
+					for (Items invitems : itemrepoininventory) {
+						itemsininventory.add(invitems);
+					}
+			return temrepoininventory;
+			
+		}
+
 	@GetMapping("/locationbyid")
 	public Location getLocationById(@RequestParam String id){
 		return Locationrepo.findById(Integer.parseInt(id)).get();
@@ -49,16 +56,67 @@ public class Controller {
 	}
 	@GetMapping("/locationmethods")
 	public List<Methods> getlocationmethods(@RequestParam("id") int id ){
+		additemtoinv(id);
 		Location loc = Locationrepo.findById(id).get();
 		List<Methods> locationrepomethods = loc.locationmethods;
-		List<Methods> approvedmethods = new ArrayList<Methods>(locationrepomethods);
+		List<Methods> approvedmethods = new ArrayList<Methods>();
 		for (Methods mt : locationrepomethods) {
-			if (mt.getRequireditemid() != null){
-				int requireditemid = mt.getRequireditemid();
-				playerinventoryrepo.
+			boolean valid = methodValidForPlayerInventory(mt);
+			if (valid) {
+				approvedmethods.add(mt);
 			}
 		}
 		return approvedmethods;
+	}
+
+	private boolean methodValidForPlayerInventory(Methods mt) {
+		
+		boolean requiredItemPresent = requiredItemPresentInMethod(mt);
+		boolean deletemethodwithitem = deleteMethodWihItemInMethod(mt);
+		boolean valid = requiredItemPresent && deletemethodwithitem;
+		return valid;
+		
+	}
+		
+		
+
+	private boolean deleteMethodWihItemInMethod(Methods mt) {
+			if (mt.getDeletemethodwithitemid() == null) {
+				return true;
+			} else {
+		int removemethoditemid = mt.getDeletemethodwithitemid();
+		Playerinventory removemethodbyplayerinventory = playerinventoryrepo.finditemInInventoryById(removemethoditemid);
+		if (removemethodbyplayerinventory == null) {
+		return true;
+		}else {
+			return false;
+		}
+		}
+	}
+
+
+	private boolean requiredItemPresentInMethod(Methods mt) {
+		if (mt.getRequireditemid() == null){
+			return true;
+		} else {
+			int requireditemid = mt.getRequireditemid();
+			Playerinventory addmethodbyplayerinventory = playerinventoryrepo.finditemInInventoryById(requireditemid);
+			if (null == addmethodbyplayerinventory) {
+				return false;
+			} else
+				return true;
+				
+			}
+	}
+
+
+	public void additemtoinv(int id) {
+		if (id == 25) {
+			Playerinventory inv = new Playerinventory();
+			Optional<Items> findById = itemrepo.findById(1);
+			inv.setItem(findById.get());
+			playerinventoryrepo.save(inv);
+		}
 	}
 	
 	@GetMapping("/methodsforlocation")
