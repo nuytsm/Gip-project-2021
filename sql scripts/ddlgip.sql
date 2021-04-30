@@ -5,6 +5,7 @@ DROP TABLE playercharacter ;
 DROP TABLE locationsmethods;
 DROP TABLE methods;
 drop table playerinventory;
+drop table gebruikers ;
 drop table items;
 
 create table locations(
@@ -20,10 +21,11 @@ create table methods(
     
 );
 create table playerinventory (
-
-    inventoryid int not null auto_increment primary key,
+    inventoryid int not null primary key,
   	itemid int,
-   	foreign key (itemid ) references items(itemid )
+  	gebruikersinvid int,
+  	foreign key (gebruikersinvid) references gebruikers(gebruikerid),
+   	foreign key (itemid ) references items(itemid)
 ); 
 create table items(
 	itemid int auto_increment primary key,
@@ -37,15 +39,16 @@ create table locationmethods(
 	foreign key (methodid) references methods(methodsid)
 
 );
+create table gebruikers(
+gebruikerid int not null auto_increment primary key
+);
 alter table methods
 	add requireditemid int
 ;
 alter table methods
 	add foreign key (requireditemid) references items(itemid)
 ;
-alter table playerinventory 
-	add itemname varchar(20)
-;
+
 alter table methods
 	add foreign key (itemname) references items(itemname)
 ;

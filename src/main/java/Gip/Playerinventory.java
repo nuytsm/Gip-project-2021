@@ -22,7 +22,7 @@ public class Playerinventory{
 	
 	@ManyToOne
 	@JoinColumn(name ="itemid")
-	private Items item;
+	public Items item;
 
 //	@Column(name="itemname", nullable = false)
 //	private String playerinvitemname;

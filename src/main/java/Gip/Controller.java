@@ -35,15 +35,29 @@ public class Controller {
 	}
 	
 	@GetMapping("/itemsininventory")
-		public Iterable<Playerinventory> getItem(@RequestParam("id") int id) {
+		public List<Playerinventory> getItem(@RequestParam("id") int id) {
 			Optional<Items> item = itemrepo.findById(id);
-			List<Playerinventory> itemrepoininventory = item.getItemid(id);
-					for (Items invitems : itemrepoininventory) {
-						itemsininventory.add(invitems);
+			List<Playerinventory> itemrepoininventory = item;
+					for (Playerinventory invitems : itemrepoininventory) {
+						itemrepoininventory.add(invitems);
 					}
-			return temrepoininventory;
+			return itemrepoininventory;
+	}
 			
-		}
+			public void additemtoinv(int id) {
+				if (id == 25) {
+					Playerinventory inv = new Playerinventory();
+					Optional<Items> findById = itemrepo.findById(1);
+					inv.setItem(findById.get());
+					playerinventoryrepo.save(inv);
+				}
+			}
+		
+			private void removeitemtoinv(int id) {
+				if (id == 26) {
+					playerinventoryrepo.deleteById(1);
+				}
+			}
 
 	@GetMapping("/locationbyid")
 	public Location getLocationById(@RequestParam String id){
@@ -57,6 +71,7 @@ public class Controller {
 	@GetMapping("/locationmethods")
 	public List<Methods> getlocationmethods(@RequestParam("id") int id ){
 		additemtoinv(id);
+		removeitemtoinv(id);
 		Location loc = Locationrepo.findById(id).get();
 		List<Methods> locationrepomethods = loc.locationmethods;
 		List<Methods> approvedmethods = new ArrayList<Methods>();
@@ -68,6 +83,7 @@ public class Controller {
 		}
 		return approvedmethods;
 	}
+
 
 	private boolean methodValidForPlayerInventory(Methods mt) {
 		
@@ -110,14 +126,6 @@ public class Controller {
 	}
 
 
-	public void additemtoinv(int id) {
-		if (id == 25) {
-			Playerinventory inv = new Playerinventory();
-			Optional<Items> findById = itemrepo.findById(1);
-			inv.setItem(findById.get());
-			playerinventoryrepo.save(inv);
-		}
-	}
 	
 	@GetMapping("/methodsforlocation")
 	public void methodsforlocation(@RequestParam("id") int id ) {
