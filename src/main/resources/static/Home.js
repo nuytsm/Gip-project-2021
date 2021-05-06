@@ -66,27 +66,35 @@ var myvue = new Vue({
           .catch(error => console.log(error))
       },
       getlocationbymethodid(id){
-        if (id == 25){
-            kasteelpoortkey = true;
-        }
         document.getElementById("healthpoints").innerHTML = "Health: " + healthpoints + "/" + maxhealth;
+
         if (id == 13){
-            healthpoints = healthpoints -5;}
-            if (id == 22){
-                healthpoints = maxhealth;}
+            healthpoints = healthpoints -5;
             document.getElementById("healthpoints").innerHTML = "Health: " + healthpoints + "/" + maxhealth;
+        }
+        if (id == 22){
+            healthpoints = maxhealth;
+            document.getElementById("healthpoints").innerHTML = "Health: " + healthpoints + "/" + maxhealth;
+        }
+        if (id == 28){
+            healthpoints = healthpoints -3;
+            console.log(healthpoints);
+            document.getElementById("healthpoints").innerHTML = "Health: " + healthpoints + "/" + maxhealth;
+    }
+        
         if (healthpoints <= 0){
             this.gameovermethod(11);
             
-        } else {
+        }
+         
+        else {
+            
         axios
         .get( 'http://localhost:8886/locationbyid?id=' + id )
         .then(function(response){
 
-            this.currentlocation = response.data;
-            console.log(this.currentlocation);
-            this.getlocationmethods(id) 
-
+            this.playerinventory = response.data;
+            console.log(this.playerinventory);
         }.bind(this))
         .catch(error => console.log(error));
     }
@@ -105,9 +113,15 @@ var myvue = new Vue({
         .catch(error => console.log(error));
 
     },
-  
-      
-     
-   
-}
+    getitems(){
+        axios
+        .get( 'http://localhost:8886/itemsininventory')
+        .then(function(response){
+            this.currentlocation = response.data;
+            console.log(this.currentlocation);
+            this.getlocationmethods(id) 
+        }.bind(this))
+        .catch(error => console.log(error));
+    },
+    } 
 })

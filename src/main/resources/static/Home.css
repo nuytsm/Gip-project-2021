@@ -2,17 +2,24 @@
 body{
  
  background-color: #2d2926ff;
+ justify-content: center;
+}
+#body{
+    justify-content: center;
+    top: 0%;
+    left: 0%;
 }
 #playerstat{
+border: 8px solid;
 background-color: #643E46FF;
 border-color: lightslategrey;
-border-width: 1cm;
 height: 250px;
 width: 175px;
 left: 0;
 top: 0;
 color:white;
 flex-direction: column;
+
 }
 #barcontainer{
     background-color:#e94b3cff;
@@ -21,7 +28,7 @@ flex-direction: column;
     background-color: limegreen;
 }
 #maintext{
-    top: 50%;
+    top: 0%;
     left: 0%;
     display: flex;
     flex-direction: column;
@@ -29,6 +36,7 @@ flex-direction: column;
     padding: 0;
     margin: 0;
     list-style: none;
+    place-items: center;
 }
 #currentlocationname{
     left: 50%;
@@ -46,6 +54,8 @@ flex-direction: column;
     text-align: center;
     font-family: 'Myriad Pro','Open Sans',sans-serif;
     position:sticky;
+    border: 8px solid;
+    border-color: rgba(190, 24, 93, 0.623);
 }
 #locationtext{
     left: 50%;
@@ -62,9 +72,11 @@ flex-direction: column;
     font-size: 1em;
     text-align: center;
     position:sticky;
-    font-family: 'Myriad Pro','Open Sans',sans-serif
+    font-family: 'Myriad Pro','Open Sans',sans-serif;
+    border: 8px solid;
 }
 #methods{
+    border: 8px solid;
     left: 50%;
     background-color: rgb(126, 8, 28);
     display:flex;

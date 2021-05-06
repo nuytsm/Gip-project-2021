@@ -18,8 +18,8 @@
             <div id="inventoryheader">
                 inventory
             </div>
-            <div id="inventory">
-                {{playerinventory.playerinvitemname}}
+            <div id="inventory" v-for="items in playerinventory">
+                {{playerinventory.itemname}}
             </div>
        </div>
        <div id="maintext">
