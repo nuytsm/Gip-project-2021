@@ -20,7 +20,7 @@ var myvue = new Vue({
     methods: {
         getplayerinventory(){
             axios
-            .get( 'http://localhost:8886/playerinv')
+            .get( 'http://localhost:8886/itemsininventory')
             .then(function(response){
     
                 this.playerinventory = response.data;
@@ -37,19 +37,15 @@ var myvue = new Vue({
         },
 
         getlocationbyid(id){
-            
             axios
             .get( 'http://localhost:8886/locationbyid?id=' + id )
             .then(function(response){
                 this.currentlocation = response.data;
                 console.log(this.currentlocation);
                 this.getlocationmethods(id) 
-
             }.bind(this))
             .catch(error => console.log(error))
-        }
-
-    ,
+        },
     getlocationmethods(id){
         axios
         .get( 'http://localhost:8886/locationmethods?id=' + id )
@@ -109,17 +105,6 @@ var myvue = new Vue({
             console.log(this.currentlocation);
             this.getlocationmethods(id) 
 
-        }.bind(this))
-        .catch(error => console.log(error));
-
-    },
-    getitems(){
-        axios
-        .get( 'http://localhost:8886/itemsininventory?id=')
-        .then(function(response){
-            this.currentlocation = response.data;
-            console.log(this.currentlocation);
-            this.getlocationmethods(id) 
         }.bind(this))
         .catch(error => console.log(error));
     },
