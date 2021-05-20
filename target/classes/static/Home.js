@@ -22,10 +22,9 @@ var myvue = new Vue({
             axios
             .get( 'http://localhost:8886/itemsininventory')
             .then(function(response){
-    
+                console.log("test")
                 this.playerinventory = response.data;
                 console.log(this.playerinventory);
-    
             }.bind(this))
             .catch(error => console.log(error));
         
@@ -51,7 +50,8 @@ var myvue = new Vue({
         .get( 'http://localhost:8886/locationmethods?id=' + id )
         .then(function(response){
             this.locationmethods = response.data;
-            console.log(this.locationmethods.naam + this.locationmethods.id);
+            console.log(response.data)
+            
         }.bind(this))
         .catch(error => console.log(error))
     },
@@ -62,6 +62,7 @@ var myvue = new Vue({
           .catch(error => console.log(error))
       },
       getlocationbymethodid(id){
+          console.log("getlocationmethodid: " + id)
         document.getElementById("healthpoints").innerHTML = "Health: " + healthpoints + "/" + maxhealth;
 
         if (id == 13){
@@ -76,7 +77,7 @@ var myvue = new Vue({
             healthpoints = healthpoints -3;
             console.log(healthpoints);
             document.getElementById("healthpoints").innerHTML = "Health: " + healthpoints + "/" + maxhealth;
-    }
+        }
         
         if (healthpoints <= 0){
             this.gameovermethod(11);
@@ -84,17 +85,11 @@ var myvue = new Vue({
         }
          
         else {
-            
-        axios
-        .get( 'http://localhost:8886/locationbyid?id=' + id )
-        .then(function(response){
-
-            this.playerinventory = response.data;
-            console.log(this.playerinventory);
-        }.bind(this))
-        .catch(error => console.log(error));
-    }
-    this.healthbar();  
+            console.log("Getnextlocation")
+            this.getlocationbyid(id)
+        }
+        this.healthbar();  
+        this.getplayerinventory();
     },
     gameovermethod(id){
         healthpoints = 20;

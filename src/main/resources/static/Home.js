@@ -24,7 +24,7 @@ var myvue = new Vue({
             .then(function(response){
                 console.log("test")
                 this.playerinventory = response.data;
-                console.log(this.playerinventory);
+                console.log("hier zit u de playerinventory" + this.playerinventory);
             }.bind(this))
             .catch(error => console.log(error));
         
