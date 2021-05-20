@@ -19,8 +19,11 @@
                 inventory
             </div>
             <ul>
+                <li id="inventory">
+                    {{playerinventory}}
+                </li>
                 <li id="inventory" v-for="item in playerinventory">
-                {{playerinventory.itemname}}
+                {{item.itemname}}
                 </li>
             </ul>
        </div>

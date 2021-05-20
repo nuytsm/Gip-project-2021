@@ -22,9 +22,9 @@ var myvue = new Vue({
             axios
             .get( 'http://localhost:8886/itemsininventory')
             .then(function(response){
-                console.log("test")
+                console.log("test voor de getplayerinventorymethod" , response.data)
                 this.playerinventory = response.data;
-                console.log(this.playerinventory);
+                console.log("hier zit u de playerinventory" , this.playerinventory);
             }.bind(this))
             .catch(error => console.log(error));
         

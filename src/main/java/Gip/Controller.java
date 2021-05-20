@@ -115,6 +115,12 @@ public class Controller {
 			inv.setItem(findById.get());
 			playerinventoryrepo.save(inv);
 		}
+		if (id == 2) {
+			Playerinventory inv = new Playerinventory();
+			Optional<Items> findById = itemrepo.findById(2);
+			inv.setItem(findById.get());
+			playerinventoryrepo.save(inv);
+		}
 	}
 	
 	/**

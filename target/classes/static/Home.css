@@ -6,8 +6,8 @@ body{
 }
 #body{
     justify-content: center;
-    top: 0%;
-    left: 0%;
+    top: center;
+    left: center;
 }
 #playerstat{
 border: 8px solid;
@@ -28,8 +28,8 @@ flex-direction: column;
     background-color: limegreen;
 }
 #maintext{
-    top: 0%;
-    left: 0%;
+    top: center;
+    left: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -39,7 +39,7 @@ flex-direction: column;
     place-items: center;
 }
 #currentlocationname{
-    left: 50%;
+    left: center;
     background-color: #643E46FF;
     display:flex;
     justify-content:center;
@@ -58,7 +58,7 @@ flex-direction: column;
     border-color: rgba(190, 24, 93, 0.623);
 }
 #locationtext{
-    left: 50%;
+    left: center;
     background-color: rgb(126, 8, 28);
     display:flex;
     justify-content:center;
@@ -77,7 +77,7 @@ flex-direction: column;
 }
 #methods{
     border: 8px solid;
-    left: 50%;
+    left: center;
     background-color: rgb(126, 8, 28);
     display:flex;
     justify-content:center;
@@ -98,6 +98,7 @@ ul{
     list-style-type:none;
 }
 #methodlist{
+    left: center;
     padding: 2px 6px 2px 6px;
   border-top: 1px solid #CCCCCC;
   border-right: 1px solid #333333;

@@ -16,11 +16,11 @@
                 <div id="healthbar" style="height:24px;"></div>  
             </div>
             <div id="inventoryheader">
-                inventory
+             <p>inventory</p>
             </div>
             <ul>
-                <li id="inventory" v-for="item in playerinventory">
-                {{playerinventory.itemname}}
+                <li id="inventory" v-for="i in playerinventory">
+               - {{i.item.itemname}}
                 </li>
             </ul>
        </div>
@@ -45,7 +45,5 @@
     </div>
 </div>
     <script src="Home.js"></script>
-</body>
-
-    
+</body>  
 </html>
