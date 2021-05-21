@@ -61,6 +61,8 @@ var myvue = new Vue({
           .then(response => (this.currentlocation = response.data))
           .catch(error => console.log(error))
       },
+
+      
       getlocationbymethodid(id){
           console.log("getlocationmethodid: " + id)
         document.getElementById("healthpoints").innerHTML = "Health: " + healthpoints + "/" + maxhealth;

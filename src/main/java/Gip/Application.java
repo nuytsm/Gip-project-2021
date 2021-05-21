@@ -19,6 +19,9 @@ public class Application {
 	} 
 	
 	public void clearinventory() {
-		playerinventoryrepo.deleteAll();
+		try {
+			playerinventoryrepo.deleteAll();
+		} catch (Exception e) {
+		}
 	}
 }

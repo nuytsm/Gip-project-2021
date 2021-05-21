@@ -22,9 +22,9 @@ var myvue = new Vue({
             axios
             .get( 'http://localhost:8886/itemsininventory')
             .then(function(response){
-                console.log("test voor de getplayerinventorymethod" , response.data)
+//                console.log("test voor de getplayerinventorymethod" , response.data)
                 this.playerinventory = response.data;
-                console.log("hier zit u de playerinventory" , this.playerinventory);
+//               console.log("hier zit u de playerinventory" , this.playerinventory);
             }.bind(this))
             .catch(error => console.log(error));
         
@@ -40,7 +40,7 @@ var myvue = new Vue({
             .get( 'http://localhost:8886/locationbyid?id=' + id )
             .then(function(response){
                 this.currentlocation = response.data;
-                console.log(this.currentlocation);
+//                console.log(this.currentlocation);
                 this.getlocationmethods(id) 
             }.bind(this))
             .catch(error => console.log(error))
@@ -50,7 +50,7 @@ var myvue = new Vue({
         .get( 'http://localhost:8886/locationmethods?id=' + id )
         .then(function(response){
             this.locationmethods = response.data;
-            console.log(response.data)
+//            console.log(response.data)
             
         }.bind(this))
         .catch(error => console.log(error))
@@ -64,7 +64,7 @@ var myvue = new Vue({
 
       
       getlocationbymethodid(id){
-          console.log("getlocationmethodid: " + id)
+//          console.log("getlocationmethodid: " + id)
         document.getElementById("healthpoints").innerHTML = "Health: " + healthpoints + "/" + maxhealth;
 
         if (id == 13){
@@ -99,7 +99,7 @@ var myvue = new Vue({
         .get( 'http://localhost:8886/locationbyid?id=' + id )
         .then(function(response){
             this.currentlocation = response.data;
-            console.log(this.currentlocation);
+//            console.log(this.currentlocation);
             this.getlocationmethods(id) 
 
         }.bind(this))

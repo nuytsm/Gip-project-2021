@@ -16,14 +16,11 @@
                 <div id="healthbar" style="height:24px;"></div>  
             </div>
             <div id="inventoryheader">
-                inventory
+            inventory
             </div>
             <ul>
-                <li id="inventory">
-                    {{playerinventory}}
-                </li>
-                <li id="inventory" v-for="item in playerinventory">
-                {{item.itemname}}
+                <li id="inventory" v-for="i in playerinventory">
+               - {{i.item.itemname}}
                 </li>
             </ul>
        </div>
@@ -31,8 +28,6 @@
          <div id="currentlocationname" >
             <p> {{currentlocation.locationsname}} </p>
          </div>
-     
-       
         <div id="locationtext">
             {{currentlocation.locationtext}}
         </div>
@@ -48,7 +43,5 @@
     </div>
 </div>
     <script src="Home.js"></script>
-</body>
-
-    
+</body>  
 </html>
