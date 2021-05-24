@@ -143,8 +143,8 @@ public class Controller {
 
 	private boolean methodValidForPlayerInventory(Methods mt) {
 		
-		boolean requiredItemPresent = requiredItemPresentInMethod(mt);
-		boolean deletemethodwithitem = deleteMethodWihItemInMethod(mt);
+		boolean requiredItemPresent = requiredItemPresentInInventory(mt);
+		boolean deletemethodwithitem = deleteMethodWihItemInInventory(mt);
 		boolean valid = requiredItemPresent && deletemethodwithitem;
 		return valid;
 		
@@ -158,7 +158,7 @@ public class Controller {
 		 * als er een item in de inventory zit die deze method verwijderd word deze method als false doorgegeven
 		 */
 
-	private boolean deleteMethodWihItemInMethod(Methods mt) {
+	private boolean deleteMethodWihItemInInventory(Methods mt) {
 			if (mt.getDeletemethodwithitemid() == null) {
 				return true;
 			} else {
@@ -179,7 +179,7 @@ public class Controller {
 	 * @return
 	 * als de method over een required item beschikt en dit item zit in de inventory word deze ge approved
 	 */
-	private boolean requiredItemPresentInMethod(Methods mt) {
+	private boolean requiredItemPresentInInventory(Methods mt) {
 		if (mt.getRequireditemid() == null){
 			return true;
 		} else {

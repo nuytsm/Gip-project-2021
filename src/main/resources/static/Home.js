@@ -2,6 +2,7 @@ var healthpoints = 20;
 var maxhealth = 20;
 var startlocatie = 18;
 
+
 var myvue = new Vue({
     el: '#body',
     data: {
@@ -11,24 +12,12 @@ var myvue = new Vue({
         currentlocationid: 18,
         locationmethods:'',
         currentlocation:'',
-        playerinventory:'',
         groupedItems: []
     },
     beforeMount() {
         this.getlocationbyid(startlocatie);    
     },
     methods: {
-        getplayerinventory(){
-            axios
-            .get( 'http://localhost:8886/itemsininventory')
-            .then(function(response){
-//                console.log("test voor de getplayerinventorymethod" , response.data)
-                this.playerinventory = response.data;
-//               console.log("hier zit u de playerinventory" , this.playerinventory);
-            }.bind(this))
-            .catch(error => console.log(error));
-        
-        },
         healthbar(){
             var healthwidth = healthpoints/maxhealth*100;
             console.log(document.getElementById("healthbar"));
@@ -36,22 +25,24 @@ var myvue = new Vue({
         },
 
         getlocationbyid(id){
+            
             axios
             .get( 'http://localhost:8886/locationbyid?id=' + id )
             .then(function(response){
                 this.currentlocation = response.data;
-//                console.log(this.currentlocation);
+                console.log(this.currentlocation);
                 this.getlocationmethods(id) 
             }.bind(this))
             .catch(error => console.log(error))
-        },
+        }
+
+    ,
     getlocationmethods(id){
         axios
         .get( 'http://localhost:8886/locationmethods?id=' + id )
         .then(function(response){
             this.locationmethods = response.data;
-//            console.log(response.data)
-            
+            console.log(this.locationmethods.naam + this.locationmethods.id);
         }.bind(this))
         .catch(error => console.log(error))
     },
@@ -61,37 +52,30 @@ var myvue = new Vue({
           .then(response => (this.currentlocation = response.data))
           .catch(error => console.log(error))
       },
-
-      
-      getlocationbymethodid(id){
-//          console.log("getlocationmethodid: " + id)
+      getlocationbymethodnextlocationid(id){
+    
         document.getElementById("healthpoints").innerHTML = "Health: " + healthpoints + "/" + maxhealth;
-
         if (id == 13){
-            healthpoints = healthpoints -5;
+            healthpoints = healthpoints -5;}
+            if (id == 22){
+                healthpoints = maxhealth;}
             document.getElementById("healthpoints").innerHTML = "Health: " + healthpoints + "/" + maxhealth;
-        }
-        if (id == 22){
-            healthpoints = maxhealth;
-            document.getElementById("healthpoints").innerHTML = "Health: " + healthpoints + "/" + maxhealth;
-        }
-        if (id == 28){
-            healthpoints = healthpoints -3;
-            console.log(healthpoints);
-            document.getElementById("healthpoints").innerHTML = "Health: " + healthpoints + "/" + maxhealth;
-        }
-        
         if (healthpoints <= 0){
             this.gameovermethod(11);
             
-        }
-         
-        else {
-            console.log("Getnextlocation")
-            this.getlocationbyid(id)
-        }
-        this.healthbar();  
-        this.getplayerinventory();
+        } else {
+        axios
+        .get( 'http://localhost:8886/locationbyid?id=' + id )
+        .then(function(response){
+
+            this.currentlocation = response.data;
+            console.log(this.currentlocation);
+            this.getlocationmethods(id) 
+
+        }.bind(this))
+        .catch(error => console.log(error));
+    }
+    this.healthbar();  
     },
     gameovermethod(id){
         healthpoints = 20;
@@ -99,11 +83,16 @@ var myvue = new Vue({
         .get( 'http://localhost:8886/locationbyid?id=' + id )
         .then(function(response){
             this.currentlocation = response.data;
-//            console.log(this.currentlocation);
+            console.log(this.currentlocation);
             this.getlocationmethods(id) 
 
         }.bind(this))
         .catch(error => console.log(error));
+
     },
-    } 
+  
+      
+     
+   
+}
 })
